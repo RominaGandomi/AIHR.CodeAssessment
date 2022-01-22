@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Workload.Business</AssemblyName>
+    <RootNamespace>Workload.Business</RootNamespace>
+  </PropertyGroup>
+
+</Project>

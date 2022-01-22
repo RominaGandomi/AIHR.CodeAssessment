@@ -1,0 +1,40 @@
+﻿@model List<Workload.WebApi.Models.WorkLoadHistoryModel>
+@{
+    ViewBag.Title = "Calculate minimum workload per day ";
+}
+
+@using (Html.BeginForm())
+{
+    <h4>WorkLoad calculation History</h4>
+    <br />
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Selected Cources</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">WorkLoad</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            @foreach (var item in Model[i].Cources)
+                            {
+                                @item.Cource.Name
+                                <br />
+                            }
+                        </td>
+                        <td>@Model[i].StartDate</td>
+                        <td>@Model[i].EndDate</td>
+                        <td>@Model[i].WorkLoad</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+

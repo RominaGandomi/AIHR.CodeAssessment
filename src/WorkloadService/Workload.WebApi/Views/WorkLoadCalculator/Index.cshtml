@@ -1,0 +1,59 @@
+﻿@model Workload.WebApi.Models.Dto.WorkLoadCalculationDto
+@{
+    ViewBag.Title = "Calculate minimum workload per day ";
+}
+
+@using (Html.BeginForm())
+{
+    <h4>Select cources you want to attend</h4>
+    <br />
+    <div class="row">
+        <div class="col-md-6 ">
+            <span class="col-form-label">Select cources you want to attend</span>
+
+            @for (int i = 0; i < Model.Cources.Count; i++)
+            {
+                <div class="row">
+                    <div class="col-md-10">
+                        @Model.Cources[i].Description
+                    </div>
+
+                    <div class="col-md-2">
+                        @Html.CheckBoxFor(x => x.Cources[i].IsSelected, new { @class = "form-check-inline" })
+                    </div>
+                </div>
+
+                @Html.HiddenFor(x => x.Cources[i].Id);
+                @Html.HiddenFor(x => x.Cources[i].Duration);
+                @Html.HiddenFor(x => x.Cources[i].Description);
+                <br />
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="col-form-label">Start Date (MM/dd/yyyy)</span>
+                    @Html.TextBoxFor(model => model.StartDate, "{0:MM/dd/yyyy}", new { @class = "date-picker" })
+                </div>
+                <div class="col-md-6">
+                    <span class="col-form-label">End Date (MM/dd/yyyy)</span>
+                    @Html.TextBoxFor(model => model.EndDate, "{0:MM/dd/yyyy}", new { @class = "date-picker" })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Calculate" class="btn-primary"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                Suggested workload per day is :   @Model.WorkLoad
+            </div>
+        </div>
+
+    </div>
+
+}
+
